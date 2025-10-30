@@ -19,7 +19,9 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             overflow: hidden;
-            max-width: 500px;
+
+            /* --- THIS IS THE UPDATED STYLE --- */
+            max-width: 550px; /* Was 500px */
         }
         .playlist-item img { width: 80px; height: 80px; object-fit: cover; }
         .playlist-info { padding: 10px 15px; }
@@ -32,6 +34,12 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        /* --- THIS IS THE NEW STYLE FOR THE M3U LINK --- */
+        .convert-link-m3u {
+            color: #4184f2; /* The new blue color */
+        }
+
         .logout-btn {
             display: inline-block;
             background-color: #191414;
@@ -107,8 +115,11 @@
                     <h3>{{ playlist.name }}</h3>
                     <p>{{ playlist.tracks.total }} tracks</p>
 
-                    <a href="{{ url_for('convert_playlist', playlist_id=playlist.id, format='m3u') }}" class="convert-link">Convert to M3U (innertune)</a>
-                    <a href="{{ url_for('convert_playlist', playlist_id=playlist.id, format='csv') }}" class.convert-link">Convert to CSV (rimusic)</a>
+                    <!-- --- THIS LINE IS UPDATED --- -->
+                    <a href="{{ url_for('convert_playlist', playlist_id=playlist.id, format='m3u') }}" class="convert-link convert-link-m3u">Convert to M3U</a>
+
+                    <!-- --- THIS IS THE FIXED LINE --- -->
+                    <a href="{{ url_for('convert_playlist', playlist_id=playlist.id, format='csv') }}" class="convert-link">Convert to CSV</a>
                 </div>
             </li>
         {% endfor %}
@@ -134,3 +145,4 @@
 
 </body>
 </html>
+
