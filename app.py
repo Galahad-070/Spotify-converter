@@ -11,6 +11,7 @@ app = Flask(__name__)
 
 # --- App Configuration ---
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
+app.config['SESSION_COOKIE_HTTPONLY'] = True
 SCOPE = 'playlist-read-private'
 REDIRECT_URI = 'http://127.0.0.1:5000/callback'
 

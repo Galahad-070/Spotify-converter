@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Playlists</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; }
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            padding-bottom: 100px; /* This adds space for the footer */
+        }
         h1 { color: #1DB954; }
         .playlist-list { list-style: none; padding: 0; }
         .playlist-item {
@@ -21,9 +25,9 @@
         .playlist-info { padding: 10px 15px; }
         .playlist-info h3 { margin: 0 0 5px 0; }
         .playlist-info p { margin: 0; color: #555; }
-        .convert-link { 
-            font-size: 0.9rem; 
-            margin-right: 10px; 
+        .convert-link {
+            font-size: 0.9rem;
+            margin-right: 10px;
             color: #1DB954;
             text-decoration: none;
             font-weight: bold;
@@ -38,7 +42,7 @@
             font-weight: bold;
             float: right;
         }
-        
+
         #loading-overlay {
             display: none;
             position: fixed;
@@ -52,6 +56,32 @@
             text-align: center;
             padding-top: 20%;
         }
+
+        /* --- Footer Styles --- */
+        footer {
+            background-color: #191414; /* A nice dark (Spotify) black */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+
+            /* This sticks it to the bottom */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 101; /* Above the loading overlay */
+        }
+        footer p {
+            margin: 0;
+        }
+        footer a {
+            color: #1DB954; /* Spotify green */
+            font-weight: bold;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -63,7 +93,7 @@
 
     <a href="{{ url_for('logout') }}" class="logout-btn">Log out</a>
     <h1>Your Spotify Playlists</h1>
-    
+
     <ul class="playlist-list">
         {% for playlist in playlists %}
             <li class="playlist-item">
@@ -72,13 +102,13 @@
                 {% else %}
                     <img src="http://googleusercontent.com/spotify.com/3" alt="No cover">
                 {% endif %}
-                
+
                 <div class="playlist-info">
                     <h3>{{ playlist.name }}</h3>
                     <p>{{ playlist.tracks.total }} tracks</p>
-                    
-                    <a href="{{ url_for('convert_playlist', playlist_id=playlist.id, format='m3u') }}" class="convert-link">Convert to M3U</a>
-                    <a href="{{ url_for('convert_playlist', playlist_id=playlist.id, format='csv') }}" class="convert-link">Convert to CSV</a>
+
+                    <a href="{{ url_for('convert_playlist', playlist_id=playlist.id, format='m3u') }}" class="convert-link">Convert to M3U (innertune)</a>
+                    <a href="{{ url_for('convert_playlist', playlist_id=playlist.id, format='csv') }}" class.convert-link">Convert to CSV (rimusic)</a>
                 </div>
             </li>
         {% endfor %}
@@ -89,16 +119,18 @@
             link.addEventListener('click', () => {
                 // Show the overlay
                 document.getElementById('loading-overlay').style.display = 'block';
-                
-                // --- NEW PART ---
+
                 // Set a timer to automatically hide the overlay after 15 seconds
-                // This lets you click another link without being stuck.
                 setTimeout(() => {
                     document.getElementById('loading-overlay').style.display = 'none';
                 }, 15000); // 15,000 milliseconds = 15 seconds
             });
         });
     </script>
+
+    <footer>
+        <p>made with ❤️ by <a href="https://github.com/Galahad-070" target="_blank" rel="noopener noreferrer">Galahad</a></p>
+    </footer>
 
 </body>
 </html>
