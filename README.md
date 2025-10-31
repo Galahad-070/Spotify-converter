@@ -39,8 +39,8 @@ To run this project locally, you'll need to set up your own Spotify Developer ap
 ### 1. Clone the Repository
 
 ```
-git clone https://github.com/Galahad-070/spotify-converter.git
-cd spotify-converter
+git clone https://github.com/Galahad-070/Spotify-converter.git
+cd Spotify-converter
 ```
 ### 2. Set Up a Virtual Environment
 #### On macOS/Linux:
