@@ -2,7 +2,9 @@ Spotify to YouTube Music Playlist Converter
 
 Tired of your playlists being locked into one platform? This web app lets you securely log in to your Spotify account, view all your playlists, and convert any of them into universal .m3u or .csv files.
 
-It works by matching your Spotify tracks with songs on YouTube Music, giving you a portable playlist file you can use in any media player (like VLC) or back up as a spreadsheet.
+Try it out at- http://spotify-converter.alwaysdata.net
+
+It works by matching your Spotify tracks with songs on YouTube Music, giving you a portable playlist file you can use in [Rimusic]{https://github.com/fast4x/RiMusic} or [Innertune]{https://github.com/z-huang/InnerTune} and its forks.
 
 📸 App Preview
 
@@ -48,8 +50,8 @@ To run this project locally, you'll need to set up your own Spotify Developer ap
 
 1. Clone the Repository
 
-git clone [https://github.com/Galahad-070/your-repo-name.git](https://github.com/Galahad-070/your-repo-name.git)
-cd your-repo-name
+git clone [https://github.com/Galahad-070/Spotify-converter.git](https://github.com/Galahad-070/Spotify-converter.git)
+cd Spotify-converter
 
 
 2. Set Up a Virtual Environment (Recommended)
